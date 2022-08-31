@@ -76,8 +76,8 @@ def get_period_left():
     if next_time < nowtime < next_time_period:
         words_reply = "今天是小馋猫例假来的第{0}天".format((today - next_time).days + 1)
         return words_reply
-    else:
-        next_time = next_time.replace(month=next_time.month + 1)
+    if next_time.days > nowtime.days:
+        # next_time = next_time.replace(month=next_time.month + 1)
         words_reply = "距离小馋猫的例假来临还有{0}天".format((next_time - today).days + 1)
         return words_reply
 
