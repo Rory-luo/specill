@@ -148,7 +148,7 @@ data = {
         "color": get_random_color()
     },
     "air_quality": {
-        "value": math.floor(weather['airQuality']),
+        "value": weather['airQuality'],
         "color": get_random_color()
     },
     "air_data": {
@@ -156,7 +156,7 @@ data = {
         "color": get_random_color()
     },
     "wind": {
-        "value": math.floor(weather['wind']),
+        "value": weather['wind'],
         "color": get_random_color()
     },
     "love_days": {
