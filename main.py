@@ -78,7 +78,7 @@ def get_period_left():
         return words_reply
     else:
         next_time = next_time.replace(year=next_time.year + 1)
-        words_reply = "距离小馋猫的例假来临还有{0}天".format（(next_time - today).days + 1)
+        words_reply = "距离小馋猫的例假来临还有{0}天".format((next_time - today).days + 1)
         return words_reply
 
 
