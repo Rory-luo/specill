@@ -12,7 +12,7 @@ today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
 start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
 birthday = os.getenv('BIRTHDAY')
-period = os.getenv('PERIOD')
+period_test1 = os.getenv('PERIOD')
 
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
@@ -68,7 +68,8 @@ def get_birthday_left():
 
 # 生理期倒计时
 def get_period_left():
-    print(period)
+    print(period_test1)
+    period = period_test1
     if period is None:
         print('没有设置 PERIOD')
         return 0
