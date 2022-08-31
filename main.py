@@ -12,10 +12,10 @@ today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
 start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
 birthday = os.getenv('BIRTHDAY')
+period = os.getenv('PERIOD')
 
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
-period = os.getenv('PERIOD')
 
 user_ids = os.getenv('USER_ID', '').split("\n")
 template_id = os.getenv('TEMPLATE_ID')
