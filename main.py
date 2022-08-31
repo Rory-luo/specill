@@ -152,7 +152,7 @@ data = {
         "color": get_random_color()
     },
     "air_data": {
-        "value": math.floor(weather['airData']),
+        "value": weather['airData'],
         "color": get_random_color()
     },
     "wind": {
