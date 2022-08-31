@@ -136,7 +136,7 @@ data = {
         "color": get_random_color()
     },
     'humidity': {
-        "value": math.floor(weather['humidity']),
+        "value": weather['humidity'],
         "color": get_random_color()
     },
     "highest": {
