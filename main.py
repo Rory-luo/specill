@@ -68,6 +68,7 @@ def get_birthday_left():
 
 # 生理期倒计时
 def get_period_left():
+    print(period)
     if period is None:
         print('没有设置 PERIOD')
         return 0
