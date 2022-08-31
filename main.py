@@ -12,8 +12,8 @@ today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
 start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
 birthday = os.getenv('BIRTHDAY')
-# period = os.getenv('PERIOD')
-period = '28'
+period = os.getenv('PERIOD')
+# period = '28'
 test_data = os.getenv('TEST_DATA')
 
 app_id = os.getenv('APP_ID')
