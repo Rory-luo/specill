@@ -72,13 +72,14 @@ def get_period_left():
         print('没有设置 PERIOD')
         return 0
     next_time = datetime.strptime(str(today.year) + "-" + str(today.month) + "-" + period, "%Y-%m-%d")
-    next_time_period = datetime.strptime(str(today.year) + "-" + str(today.month) + "-" + period + timedelta(days=7), "%Y-%m-%d")
+    next_time_period = (datetime.strptime(str(today.year) + "-" + str(today.month) + "-" + period, "%Y-%m-%d") + timedelta(days=7))
     if next_time < nowtime < next_time_period:
-        words_reply = "今天是小馋猫例假来的第{0}天".format(today - next_time).days
+        words_reply = "今天是小馋猫例假来的第{0}天".format((today - next_time).days + 1)
+        return words_reply
     else:
         next_time = next_time.replace(year=next_time.year + 1)
-        words_reply = "距离小馋猫的例假来临还有{0}天".format(next_time - today).days
-    return words_reply
+        words_reply = "距离小馋猫的例假来临还有{0}天".format（(next_time - today).days + 1)
+        return words_reply
 
 
 # 获取今日的星期
