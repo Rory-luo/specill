@@ -13,8 +13,6 @@ start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
 birthday = os.getenv('BIRTHDAY')
 period = os.getenv('PERIOD')
-# period = '28'
-test_data = os.getenv('TEST_DATA')
 
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
@@ -95,7 +93,6 @@ def get_today_week():
 
 # 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words():
-    print(test_data)
     words = requests.get("https://api.shadiao.pro/chp")
     if words.status_code != 200:
         return get_words()
