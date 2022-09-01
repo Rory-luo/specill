@@ -11,8 +11,6 @@ today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
 
 start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
-birthday = os.getenv('BIRTHDAY')
-period = os.getenv('PERIOD')
 
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
@@ -45,43 +43,6 @@ def get_weather():
     weather_info = result['data']['list'][0]
     return weather_info
 
-
-# 纪念日正数
-def get_memorial_days_count():
-    if start_date is None:
-        print('没有设置 START_DATE')
-        return 0
-    delta = today - datetime.strptime(start_date, "%Y-%m-%d")
-    return delta.days
-
-
-# 生日倒计时
-def get_birthday_left():
-    if birthday is None:
-        print('没有设置 BIRTHDAY')
-        return 0
-    next_time = datetime.strptime(str(today.year) + "-" + birthday, "%Y-%m-%d")
-    if next_time < nowtime:
-        next_time = next_time.replace(year=next_time.year + 1)
-    return (next_time - today).days
-
-
-# 生理期倒计时
-def get_period_left():
-    if period is None:
-        print('没有设置 PERIOD')
-        return 0
-    next_time = datetime.strptime(str(today.year) + "-" + str(today.month) + "-" + period, "%Y-%m-%d")
-    next_time_period = (datetime.strptime(str(today.year) + "-" + str(today.month) + "-" + period, "%Y-%m-%d") + timedelta(days=7))
-    if next_time <= nowtime <= next_time_period:
-        words_reply = "今天是小馋猫例假来的第{0}天".format((today - next_time).days + 1)
-        return words_reply
-    else:
-        if next_time.day > nowtime.day:
-            words_reply = "距离小馋猫的例假来临还有{0}天".format((next_time - today).days)
-            return words_reply
-
-
 # 获取今日的星期
 def get_today_week():
     week_list = {'1':'一', '2':'二', '3':'三', '4':'四', '5':'五', '6':'六', '7':'天'}
@@ -91,9 +52,9 @@ def get_today_week():
     return week_day
 
 
-# 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
+# 朋友圈文案 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words():
-    words = requests.get("https://api.shadiao.pro/chp")
+    words = requests.get("https://api.shadiao.pro/pyq")
     if words.status_code != 200:
         return get_words()
     return words.json()['data']['text']
@@ -162,18 +123,6 @@ data = {
     },
     "wind": {
         "value": weather['wind'],
-        "color": get_random_color()
-    },
-    "love_days": {
-        "value": get_memorial_days_count(),
-        "color": get_random_color()
-    },
-    "birthday_left": {
-        "value": get_birthday_left(),
-        "color": get_random_color()
-    },
-    "period":{
-        "value": get_period_left(),
         "color": get_random_color()
     },
     "words": {
