@@ -9,7 +9,6 @@ import random
 nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区时间
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
 
-start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
 
 app_id = os.getenv('APP_ID')
